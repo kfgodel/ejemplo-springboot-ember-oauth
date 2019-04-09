@@ -19,6 +19,7 @@ para mostrar algo en el login.
 Ya se puede probar en http://localhost:8080/ con `user` y el pass que sale por consola
 4. Agregar dependencias para spring-security-oauth en el [pom](springboot-backend/pom.xml)
 5. Definir credenciales hardcodeadas de usuario en [config de security](springboot-backend/src/main/java/com/example/springbootbackend/config/WebSecurityConfig.java)
+   Y securizar rutas
 5. Marcar la aplicacion con el annotation `@EnableAuthorizationServer`
 6. Declarar un cliente para grant client en [autorization server](src/main/java/info/kfgodel/oauthtest/AuthorizationServerConfig.java) 
 para soportar grant_type: autorization_code
@@ -92,7 +93,7 @@ Probar que funciona en dev (con back levantado):
 >  mvn clean package
 
 3. Probar levantar jar
-> java -jar 
+> java -jar target/springboot-backend-0.0.1-SNAPSHOT.jar
 
-4. Entrar a [http://localhost:4200/protected](http://localhost:4200/protected) 
+4. Entrar a [http://localhost:8080/](http://localhost:8080/) 
 
