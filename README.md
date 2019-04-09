@@ -85,9 +85,14 @@ Probar que funciona en dev (con back levantado):
 
 ### Verificar integración
 
-1. Levantar backend [app java](https://github.com/kfgodel/ejemplo-oauth)
-4. Verificar que no esta disponible hasta que no se autentica (click en login)
-`user:password` las credenciales
-5. Volver a [http://localhost:4200/protected](http://localhost:4200/protected) una vez autenticado
+1. Buildear frontend (desde carpeta front)
+>  ember build --environment=production --output-path=../springboot-backend/src/main/resources/static
 
-6. Se puede probar también desloguear desde una solapa, o dar refresh
+2. Buildear app java (desde carpeta back)
+>  mvn clean package
+
+3. Probar levantar jar
+> java -jar 
+
+4. Entrar a [http://localhost:4200/protected](http://localhost:4200/protected) 
+
