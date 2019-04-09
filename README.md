@@ -65,6 +65,9 @@ Abrir [http://localhost:4200/](http://localhost:4200/)
 11. Agregar [mixin](app/routes/application.js) para ser desloguear automaticamente
 
 12. Agregar ejemplo de [ruta protegida](app/routes/authenticated/protected.js)
+    Agregar [pagina protegida por autenticacion](app/templates/authenticated/protected.hbs)
+    Agregar [controller](app/controllers/authenticated/protected.js)
+
 13. Agregar las rutas en el [router](app/router.js)
 
 14. Agregar [authorizer](app/authorizers/oauth2.js) para decorar los request con headers de oauth
@@ -74,15 +77,15 @@ Abrir [http://localhost:4200/](http://localhost:4200/)
 17. Agregar endpoint y clientId como parametros del [environment](config/environment.js)
 18. Enviar requests de api al backend en [package.json](package.json)
 
-19. Agregar ejemplo de [pagina protegida por autenticacion](app/templates/authenticated/protected.hbs)
+Probar que funciona en dev (con back levantado):
+1. Levantar este frontend
+> npm start
+2. Abrir [http://localhost:4200/protected](http://localhost:4200/protected)
 
-### Verificar comportamiento
+
+### Verificar integración
 
 1. Levantar backend [app java](https://github.com/kfgodel/ejemplo-oauth)
-2. Levantar este frontend
-> npm start
-
-3. Abrir [http://localhost:4200/protected](http://localhost:4200/protected)
 4. Verificar que no esta disponible hasta que no se autentica (click en login)
 `user:password` las credenciales
 5. Volver a [http://localhost:4200/protected](http://localhost:4200/protected) una vez autenticado
