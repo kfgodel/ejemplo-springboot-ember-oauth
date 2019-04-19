@@ -1,8 +1,11 @@
 package com.example.springbootbackend.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,6 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 @Configuration
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+  public static Logger LOG = LoggerFactory.getLogger(AuthorizationServerConfig.class);
 
   @Autowired
   private AuthenticationConfiguration authenticationConfiguration;
@@ -36,7 +40,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
   @Override
   public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-    endpoints.authenticationManager(authenticationConfiguration.getAuthenticationManager());
+    AuthenticationManager authenticationManager = authenticationConfiguration.getAuthenticationManager();
+    LOG.info("Elegido para auth server: {}", authenticationManager);
+    endpoints.authenticationManager(authenticationManager);
   }
 
   @Override
