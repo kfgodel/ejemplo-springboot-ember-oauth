@@ -1,6 +1,9 @@
 
 custom.api.path: /api/v1
 
+# Necesario para que las reglas del resource server apliquen a todas las rutas
+security.oauth2.resource.filter-order: 3
+
 server:
   error:
     whitelabel:

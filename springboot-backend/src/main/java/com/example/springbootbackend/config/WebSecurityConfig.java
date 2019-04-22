@@ -1,12 +1,19 @@
 package com.example.springbootbackend.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+
+/**
+ * Esta clase permite exponer como beans los objetos que controlan la autenticacion.<br>
+ *   Si no definieramos esta clase, no serían accesibles
+ */
+@Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -22,30 +29,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
 
+  @Bean
   @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http
-			.authorizeRequests()
-      .anyRequest().authenticated()
-      .and()
-      .csrf().disable()
-      .anonymous().disable()
-      .httpBasic().disable()
-      .formLogin().disable()
-
-//            .anyRequest().authenticated()
-//            .and().formLogin().disable()
-    ;
-
-    //    http
-//            .authorizeRequests()
-//            .antMatchers(HttpMethod.GET, "/","/static/**", "/resources/**","/resources/public/**").permitAll()
-//            .anyRequest().authenticated()
-//            .and()
-//            .formLogin()
-//            .and()
-//            .httpBasic().disable()
-//            .requiresChannel().anyRequest().requiresSecure();
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
   }
 
 }
