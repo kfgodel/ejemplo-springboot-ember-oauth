@@ -2,12 +2,12 @@ import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 
 export default Controller.extend({
-  session: service(),
+  sessionService: service('session'),
 
   actions: {
     authenticate() {
       let {identification, password} = this.getProperties('identification', 'password');
-      this.get('session')
+      this.get('sessionService')
         .authenticate('authenticator:oauth2', identification, password)
         .then(()=>{
           this.set('errorMessage', 'Correctamente logueado. Anda a protected ahora');
